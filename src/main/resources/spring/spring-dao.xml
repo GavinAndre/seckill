@@ -50,4 +50,11 @@
         <property name="basePackage" value="com.gavinandre.seckill.dao"/>
     </bean>
 
+    <!-- RedisDao -->
+    <bean id="redisDao" class="com.gavinandre.seckill.dao.cache.RedisDao">
+        <constructor-arg index="0" value="192.168.1.110"/>
+        <constructor-arg index="1" value="6379"/>
+        <constructor-arg index="2" value="123456"/>
+    </bean>
+
 </beans>

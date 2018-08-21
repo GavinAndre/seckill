@@ -17,35 +17,28 @@ public interface SeckillService {
 
     /**
      * 查询所有秒杀记录
-     *
-     * @return
      */
     List<Seckill> getSeckillList();
 
     /**
      * 查询单个秒杀记录
-     *
-     * @param seckillId
-     * @return
      */
     Seckill getById(long seckillId);
 
     /**
      * 秒杀开启时输出秒杀接口地址,
      * 否则输出系统时间和秒杀时间
-     *
-     * @param seckillId
      */
     Exposer exportSeckillUrl(long seckillId);
 
     /**
-     * @param seckillId
-     * @param userPhone
-     * @param md5
-     * @throws SeckillException
-     * @throws RepeatKillException
-     * @throws SeckillCloseException
+     * 执行秒杀过程
      */
     SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
             throws SeckillException, RepeatKillException, SeckillCloseException;
+
+    /**
+     * 执行秒杀过程by存储过程
+     */
+    SeckillExecution executeSeckillProcedure(long seckillId, long userPhone, String md5);
 }

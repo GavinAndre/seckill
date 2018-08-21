@@ -60,4 +60,19 @@ public class SeckillServiceTest {
         }
     }
 
+    /**
+     * 集成测试代码完整逻辑,注意可重复执行
+     */
+    @Test
+    public void testExecuteSeckillProcedure() {
+        long seckillId = 1001;
+        long phone = 12345678901L;
+        Exposer exposer = seckillService.exportSeckillUrl(seckillId);
+        if (exposer.isExposed()) {
+            String md5 = exposer.getMd5();
+            SeckillExecution execution = seckillService.executeSeckillProcedure(seckillId, phone, md5);
+            logger.info(execution.getStateInfo());
+        }
+    }
+
 }
