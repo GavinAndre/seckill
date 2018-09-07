@@ -17,12 +17,12 @@ public class RedisDao {
 
     private String password;
 
+    private RuntimeSchema<Seckill> schema = RuntimeSchema.createFrom(Seckill.class);
+
     public RedisDao(String ip, int port, String password) {
         jedisPool = new JedisPool(ip, port);
         this.password = password;
     }
-
-    private RuntimeSchema<Seckill> schema = RuntimeSchema.createFrom(Seckill.class);
 
     public Seckill getSeckill(long seckillId) {
         //redis操作逻辑
@@ -73,4 +73,6 @@ public class RedisDao {
         }
         return null;
     }
+
+
 }
